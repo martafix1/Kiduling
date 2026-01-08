@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QMainWindow, QTabWidget, QMenuBar
 from canvas.canvas_view import Canvas
 from editor.text_editor import CodeEditor
+from toolbar.main_toolbar import MainToolbar
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -12,6 +13,10 @@ class MainWindow(QMainWindow):
         menubar = QMenuBar()
         file_menu = menubar.addMenu("File")
         self.setMenuBar(menubar)
+
+        # Toolbar
+        self.toolbar = MainToolbar(self)
+        self.addToolBar(self.toolbar)
 
         # Tabs
         self.tabs = QTabWidget()
