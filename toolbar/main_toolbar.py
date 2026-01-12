@@ -10,6 +10,9 @@ class MainToolbar(QToolBar):
         new_block_action = QAction(QIcon("resources/icons/speedometer-arrow.svg"), "New Block", self)
         self.addAction(new_block_action)
 
+        self.debug_action = QAction(QIcon("resources/icons/bug-slash.svg"), "Debug", self)
+        self.addAction(self.debug_action)
+
         # Example toggle button: Select/Draw Mode
         select_action = QAction(QIcon("resources/icons/select.png"), "Select Mode", self)
         select_action.setCheckable(True)

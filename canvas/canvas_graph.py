@@ -19,6 +19,8 @@ class GraphNode:
 
         self.edges: List["GraphEdge"] = []
 
+        # self._item = None # reference to graphical object (item) #this is done later or never
+
     def attach_edge(self, edge: "GraphEdge"):
         if edge not in self.edges:
             self.edges.append(edge)
@@ -56,6 +58,7 @@ class GraphEdge:
         self.layer = layer
         self.properties: Dict[str, Any] = properties or {}
 
+        # self._item : ConnectionItem = None # reference to graphical object (item) # this is done later
         a.attach_edge(self)
         b.attach_edge(self)
 
