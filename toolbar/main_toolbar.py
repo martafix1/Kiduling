@@ -22,11 +22,23 @@ class MainToolbar(QToolBar):
         draw_action.setCheckable(True)
         self.addAction(draw_action)
 
+        self.addSeparator()
+
+        canvas_sceneResizable_action = QAction(QIcon(),"scene resizable",self)
+        canvas_sceneResizable_action.setCheckable(True)
+        canvas_sceneResizable_action.setChecked(True)
+        #canvas_sceneResizable_action.connect(lambda: parent.canvas_tab.updateProperty("scene_resizable",canvas_sceneResizable_action.isChecked()))
+        canvas_sceneResizable_action.toggled.connect(
+            lambda checked: parent.canvas_tab.updateProperty("scene_resizable", checked)
+            )
+        self.addAction(canvas_sceneResizable_action)
         # Group toggle buttons
 
         self.addSeparator()
 
         # Example dropdown
         combo = QComboBox()
-        combo.addItems(["Option 1", "Option 2", "Option 3"])
+        combo.addItems(["Grid background", "Pixelmap grid background", "White"])
         self.addWidget(combo)
+
+        combo.currentIndexChanged.connect(lambda index: parent.canvas_tab.updateProperty("canvas_background", index))
